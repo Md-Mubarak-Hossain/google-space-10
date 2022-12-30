@@ -6,8 +6,10 @@ import Home from '../pages/home/Home';
 import AddTask from '../pages/task/addTask/AddTask';
 import CompleteTask from '../pages/task/completeTask/CompleteTask';
 import UncompleteTask from '../pages/task/notcompleteTask/Uncomplete.js';
-
 import MyTask from '../pages/task/mytask/MyTask';
+import Signup from '../account/Signup';
+import Login from '../account/Login';
+import Protect from './Protect';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -22,7 +24,7 @@ const Router = () => {
                 },
                 {
                     path: '/add',
-                    element: <AddTask></AddTask>
+                    element: <Protect><AddTask></AddTask></Protect>
                 },
                 {
                     path: '/my',
@@ -38,8 +40,21 @@ const Router = () => {
                     element: <CompleteTask></CompleteTask>
                 },
                 {
+                    path: '/login',
+                    element: <Login></Login>
+                },
+                {
+                    path: '/signup',
+                    element: <Signup></Signup>
+                },
+                {
                     path: '/demo',
                     element: <Demo></Demo>
+                },
+                {
+                    path: '/demo/:id',
+                    element: <Demo></Demo>,
+                    loader: async ({ params }) => fetch(`https://server-space.vercel.app/mytask/${params.id}`)
                 },
             ]
         },

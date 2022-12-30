@@ -1,110 +1,71 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import React, { useContext, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../context/Context';
+import useTitle from '../../Hooks/useTitle';
 
 
+const ReviewUpdate = () => {
+    useTitle('Update task');
+    const review = useLoaderData();
+    console.log(review)
+    const { loading, user } = useContext(AuthContext)
+    const [reviewer, setReviewer] = useState(review)
 
-const Demo = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
-    const imageHostKey = process.env.REACT_APP_imgbb_key;
-
-
-    const { data: tasks, isLoading } = useQuery({
-        queryKey: ['description'],
-        queryFn: async () => {
-            const res = await fetch('https://server-space.vercel.app/mytask');
-            const data = await res.json();
-            return data;
-        }
-    })
-
-    const handleUploadData = data => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
-        fetch(url, {
-            method: 'POST',
-            body: formData
+    const handleSub = event => {
+        event.preventDefault();
+        fetch(`https://server-space.vercel.app/mytask/${reviewer._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewer)
         })
-            .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-                    console.log(imgData.data.url);
-                    const taskPost = {
-                        name: data.name,
-                        email: data.email,
-                        description: data.description,
-                        image: imgData.data.url
-                    }
 
-                    // save doctor information to the database
-                    fetch('https://server-space.vercel.app/mytask', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify(taskPost)
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
-                            toast.success(`${data.name} is added successfully`);
-                        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.modified > 0) {
+                    alert('successfully updated!!!');
+                    event.target.reset();
                 }
+
+
             })
     }
-
-    if (isLoading) {
+    const onChangeHandle = event => {
+        const value = event.target.value;
+        const field = event.target.field;
+        const newReview = { ...reviewer }
+        newReview[field] = value;
+        setReviewer(newReview);
+    }
+    if (loading) {
         return <p>loading...</p>
     }
-
     return (
-        <div className='w-96 p-7'>
-            <h2 className="text-4xl">Add A Task</h2>
-            <form onSubmit={handleSubmit(handleUploadData)}>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Name</span></label>
-                    <input type="text" {...register("name", {
-                        required: "Name is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+        <div className='w-11/12 mx-auto'>
+            <h2 className='text-xl lg:text-2xl font-extrabold text-primary text-center'>Update Form</h2>
+            <h2 className='text-xl lg:text-3xl font-extrabold text-warning text-center'>The Details Of this service : <span className='text-primary'> {review.serviceName}</span> </h2>
+            <div className="card lg:card-side  shadow-xl grid grid-cols-1 lg:grid-cols-2">
+                <div className="card-body w-11/12 mx-auto lg:w-full  bg-red-300 text-blue-900 rounded">
+                    <h2>Your Previous  Information</h2>
+                    <h2>Reviewer Name:{review.name}</h2>
+                    <h2>Email:{review.email}</h2>
+                    <h2>description:{review.description}</h2>
+                    <img src={review.image} alt="" />
                 </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Email</span></label>
-                    <input type="email" {...register("email", {
-                        required: true
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Description</span></label>
-                    <input type="text" {...register("description", {
-                        required: "description is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Task images</span></label>
-                    <input type="file" {...register("image", {
-                        required: "Task images is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
-                </div>
-                <input className='btn btn-accent w-full mt-4' value="Add Task" type="submit" />
-            </form>
+                <form form onSubmit={handleSub} className="card-body w-11/12 mx-auto lg:w-full  bg-blue-900 rounded">
+                    <h2>Your Update field</h2>
+                    <input onChange={onChangeHandle} type="text" name="name" placeholder=" first name" className="input input-bordered w-full max-w-xs" required />
+                    <input onChange={onChangeHandle} type="text" name="worker" placeholder="worker name" className="input input-bordered w-full max-w-xs" required />
+                    <input type="email" name="email" defaultValue={user?.email} className="input input-bordered w-full max-w-xs" readOnly />
+                    <textarea onChange={onChangeHandle} name="description" className="textarea textarea-bordered w-full max-w-xs" placeholder="why you want to update?" required></textarea>
+                    <button className="btn btn-outline btn-secondary 
+                            hover:btn-warning w-full max-w-xs">Confirm Update</button>
+                </form>
+            </div>
         </div>
     );
 };
 
-
-/**
- * Three places to store images
- * 1. Third party image hosting server 
- * 2. File system of your server
- * 3. mongodb (database)
-*/
-
-export default Demo;
+export default ReviewUpdate;

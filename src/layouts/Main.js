@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../pages/shared/Footer/Footer';
 import logo from '../components/assets/download.png';
 import { BsMoon, BsSun } from 'react-icons/bs';
+import { AuthContext } from '../context/Context';
 const Main = () => {
+    const { user, logOut } = useContext(AuthContext)
     const [isToggleOpen, setIsToggleOpen] = useState(false)
     const [them, setThem] = useState('bg-white text-slate-800');
+    const logout = () => {
+        logOut()
+            .then(() => { })
+    }
     const menuitems = <>
         <li role="none" className="flex items-stretch">
             <Link
                 role="menuitem"
                 aria-haspopup="false"
                 tabIndex="0"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8">
+                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3">
                 {
                     them === 'bg-white text-slate-800' ?
                         <button className='bg-slate-800 p-2 rounded-full' onClick={() => setThem('bg-slate-800 text-slate-100')}>
@@ -30,7 +36,7 @@ const Main = () => {
                 role="menuitem"
                 aria-haspopup="false"
                 tabIndex="0"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
                 to='/'
             >
                 <span>Home</span>
@@ -42,7 +48,7 @@ const Main = () => {
                 aria-current="page"
                 aria-haspopup="false"
                 tabIndex="0"
-                className="flex items-center gap-2 py-4 text-emerald-500 transition-colors duration-300 hover:text-emerald-600 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                className="flex items-center gap-2 py-4 text-emerald-500 transition-colors duration-300 hover:text-emerald-600 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
                 to='/add'
             >
                 <span>Add Task</span>
@@ -53,7 +59,7 @@ const Main = () => {
                 role="menuitem"
                 aria-haspopup="false"
                 tabIndex="0"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
                 to='/my'
             >
                 <span>My Task</span>
@@ -64,13 +70,42 @@ const Main = () => {
                 role="menuitem"
                 aria-haspopup="false"
                 tabIndex="0"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
                 to='/complete'
             >
-                <span>Completed Task</span>
+                <span>Complete Task</span>
             </Link>
         </li >
-    </ >
+        {
+            user && user.uid ?
+                <button className='btn btn-blue-500 uppercase' onClick={() => logout()}>log out</button>
+                :
+                <>
+                    <li role="none" className="flex items-stretch">
+                        <Link
+                            role="menuitem"
+                            aria-haspopup="false"
+                            tabIndex="0"
+                            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
+                            to='/login'
+                        >
+                            <span>Login</span>
+                        </Link>
+                    </li >
+                    <li role="none" className="flex items-stretch">
+                        <Link
+                            role="menuitem"
+                            aria-haspopup="false"
+                            tabIndex="0"
+                            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-3"
+                            to='/signup'
+                        >
+                            <span>Sign up</span>
+                        </Link>
+                    </li>
+                </>
+        }
+    </>
     return (
         <div className={them}
         >
@@ -80,7 +115,7 @@ const Main = () => {
 
                     <nav
                         aria-label="main navigation"
-                        className={`flex h-[5.5rem] items-stretch justify-between font-medium`}
+                        className={`flex h-[5.5rem] items-stretch justify-between uppercase text-sm`}
                         role="navigation"
                     >
                         {/*      <!-- Brand logo --> */}
