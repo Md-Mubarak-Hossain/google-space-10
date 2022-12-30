@@ -32,7 +32,7 @@ const Router = () => {
                 },
                 {
                     path: '/uncomplete/:id',
-                    element: <UncompleteTask></UncompleteTask>,
+                    element: <Protect><UncompleteTask></UncompleteTask></Protect>,
                     loader: async ({ params }) => fetch(`https://server-space.vercel.app/mytask/${params.id}`)
                 },
                 {
