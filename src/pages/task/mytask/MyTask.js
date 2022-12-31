@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
-
 const MyTask = () => {
     const { loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
@@ -37,41 +36,40 @@ const MyTask = () => {
         return <p>loading...</p >
     return (
 
-        <div class="w-full overflow-x-auto my-10 p-2">
-            <h2>total task:{tasks.length}</h2>
-            <table class="w-full text-left border border-separate rounded border-slate-200">
-                <tbody>
-                    <tr>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium text-center border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"></th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium text-center border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Worker</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task Name</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task description</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Image</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task Position</th>
-                    </tr>
-                    {tasks.map(task => <tr key={task._id}>
-
-                        <th scope="row" class="h-12 px-6 text-sm text-center transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                            <button onClick={() => handleDelete(task._id)}>Delete</button>
-                        </th>
-                        <th scope="row" class="h-12 px-6 text-sm text-center transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.worker}</th>
-                        <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.name}</td>
-                        <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.description}</td>
-                        <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                            <img src={task.image} alt="" className='w-48' />
-                        </td>
-                        <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500">
-                            {
-                                task.description.length > 0 ?
-                                    <button>completed</button>
-                                    :
-                                    <Link to={`/uncomplete/${task._id}`} className='text-red-900'>not complete</Link>
-                            }
-                        </td>
-                    </tr>)
-                    }
-                </tbody>
-            </table>
+        <div class="my-10 p-2">
+            <div className='text-xl uppercase'>Your Project House</div>
+            <hr className='w-full text-xl font-bold text-violet-900' />
+            <h2 className='py-2 my-5 uppercase lg:text-2xl'>total Projects: {tasks.length}</h2>
+            <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>
+                {tasks.map(task => <div key={task._id} className=' lg:shadow-violet-700 lg:shadow-xl lg:relative lg:p-5 rounded'>
+                    <div className='w-full lg:p-2 lg:my-5'>
+                        <div class="p-2 text-sm uppercase text-blue-700">WORKER: {task.worker}</div>
+                        <div class="p-2 text-sm uppercase text-blue-700 font-bold">PROJECT NAME: {task.name}</div>
+                        <div class="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task.description.slice(0, 300)}</div>
+                        <div class="p-2 text-sm text-justify uppercase">PROJECT images:
+                            <img src={task.image} alt="" />
+                        </div>
+                        <div class="p-2 text-sm text-justify">live site: {task.live}</div>
+                        <div class="p-2 text-sm text-justify">client site repository: {task.client}</div>
+                        <div class="p-2 text-sm text-justify">server site repository: {task?.server}</div>
+                    </div>
+                    <div class="p-2 text-sm">
+                        {
+                            task.description.length > 0 ?
+                                <div className='w-full flex lg:absolute bottom-0 my-2'>
+                                    <Link to={`/taskdetail/${task._id}`} className=' bg-violet-800 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase'> Complete</Link>
+                                    <button onClick={() => handleDelete(task._id)} className='uppercase text-xs bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-1'>Delete</button>
+                                </div>
+                                :
+                                <div className='w-full flex lg:absolute bottom-0 my-2'>
+                                    <Link to={`/uncomplete/${task._id}`} className='btn bg-red-800 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase text-xs'>incomplete</Link>
+                                    <button onClick={() => handleDelete(task._id)} className='uppercase text-xs bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-1'>Delete</button>
+                                </div>
+                        }
+                    </div>
+                </div>)
+                }
+            </div>
         </div >
     );
 };

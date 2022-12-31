@@ -149,7 +149,7 @@ const AddTask = () => {
 
                     </div>
                 </div>
-                <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded-lg my-2 text-sm uppercase">
+                <button class="btn bg-violet-800 hover:bg-violet-500 text-white font-bold  py-2 px-4 rounded-lg my-2 text-sm uppercase">
                     SUBMIT Project
                 </button>
             </form>

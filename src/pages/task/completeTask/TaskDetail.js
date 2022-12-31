@@ -37,7 +37,7 @@ const TaskDetail = () => {
         <>
             <div className="overflow-hidden bg-white shadow sm:rounded-lg p-5 m-5">
                 <div className="px-4 py-5 sm:px-6">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">Project Information</h3>
+                    <h3 className="text-lg font-medium leading-6 text-violet-900">Project Information</h3>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500">Project details and application.</p>
                 </div>
                 <div className="border-t border-gray-200">
@@ -116,7 +116,7 @@ const TaskDetail = () => {
                             </dd>
                         </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Task images</dt>
+                            <dt className="text-sm font-medium text-gray-500">Project images</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                 <img src={task.image} alt="" className='rounded-lg' />
                             </dd>
@@ -124,7 +124,7 @@ const TaskDetail = () => {
                     </dl>
                 </div>
                 <div className='flex'>
-                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/uncomplete/${task._id}`} className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '>update task</Link></button>
+                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/uncomplete/${task._id}`} className=' bg-violet-800 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '>update</Link></button>
                     <button className='uppercase text-xs bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' onClick={() => handleDelete(task._id)}>Delete</button>
                 </div>
             </div>

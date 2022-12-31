@@ -74,9 +74,9 @@ const MyTask = () => {
                                     </dl>
                                 </div>
                                 <div className='flex my-2'>
-                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/uncomplete/${task._id}`} className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '>Edit task</Link></button>
+                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/uncomplete/${task._id}`} className=' bg-violet-800 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '>Update</Link></button>
                                     <Protect><button className='uppercase text-xs bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' onClick={() => handleDelete(task._id)}>Delete</button></Protect>
-                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/taskdetail/${task._id}`} className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase'>See Complete Task</Link></button>
+                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/taskdetail/${task._id}`} className=' bg-violet-800 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase'> Complete Project</Link></button>
                                 </div>
                             </div>
                         </>

@@ -78,7 +78,7 @@ const Main = () => {
                             <span>Complete Task</span>
                         </Link>
                     </li >
-                    <button className='btn bg-blue-500 hover:bg-blue-700 text-white font-bold  py-1 px-4 rounded-lg  uppercase my-5' onClick={() => logout()}>log out</button>
+                    <button className='btn bg-violet-800 hover:bg-violet-500 text-white font-bold  py-1 px-4 rounded-lg  uppercase my-5' onClick={() => logout()}>log out</button>
                 </>
                 :
                 <>
