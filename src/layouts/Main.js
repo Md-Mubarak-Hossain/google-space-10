@@ -116,7 +116,7 @@ const Main = () => {
 
                         {/*      <!-- Mobile trigger --> */}
                         <button
-                            className={`relative order-10 block h-10 w-10 text-orange-800 self-center 
+                            className={`relative order-10 block h-10 w-10 self-center 
                            lg:hidden
                             ${isToggleOpen
                                     ?
@@ -131,15 +131,15 @@ const Main = () => {
 
                                 <span
                                     aria-hidden="true"
-                                    className={`absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full  transition-all duration-300 bg-slate-900`}>
+                                    className={`absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full  transition-all duration-300 bg-blue-600`}>
                                 </span>
                                 <span
                                     aria-hidden="true"
-                                    className={`absolute block h-0.5 w-6 transform rounded-full transition duration-300 bg-slate-900`}>
+                                    className={`absolute block h-0.5 w-6 transform rounded-full transition duration-300 bg-blue-600`}>
                                 </span>
                                 <span
                                     aria-hidden="true"
-                                    className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transitio9-all duration-300">
+                                    className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-blue-600 transitio9-all duration-300">
                                 </span>
                             </div>
                         </button>

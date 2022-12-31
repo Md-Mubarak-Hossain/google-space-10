@@ -37,7 +37,7 @@ const MyTask = () => {
     return (
 
         <div class="my-10 p-2">
-            <div className='text-xl uppercase'>Your Project House</div>
+            <div className='text-lg lg:text-xl uppercase'>Your Project House</div>
             <hr className='w-full text-xl font-bold text-violet-900' />
             <h2 className='py-2 my-5 uppercase lg:text-2xl'>total Projects: {tasks.length}</h2>
             <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>
