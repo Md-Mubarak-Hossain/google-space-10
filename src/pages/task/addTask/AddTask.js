@@ -34,6 +34,9 @@ const AddTask = () => {
                         name: data.name,
                         worker: data.worker,
                         email: data.email,
+                        live: data.live,
+                        client: data.client,
+                        server: data.server,
                         description: data.description,
                         image: imgData.data.url
                     }
@@ -64,34 +67,59 @@ const AddTask = () => {
     return (
 
         <div className='w-full p-5 flex flex-col place-items-center justify-center items-center'>
-            <h2 className="text-lg lg:text-xl uppercase px-5 text-orange-700">Add A Task</h2>
+            <h2 className="text-lg lg:text-xl uppercase px-5 text-orange-700 font-bold">Add Your Task</h2>
             <form onSubmit={handleSubmit(handleUploadData)} className='uppercase flex flex-col place-items-center justify-center items-center lg:w-1/2'>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 lg:p-5'>
+
                     <div className="form-control w-full text-xs">
                         <label className="label"> <span className="label-text">Worker Name</span></label>
                         <input type="text" defaultValue={user?.displayName} {...register("worker", {
                             required: false
-                        })} className="input input-bordered w-full border-b border-gray-900 border-dashed text-black" readOnly />
+                        })} className="input input-bordered w-full  border-gray-900 border-dashed text-black" readOnly />
                         {errors.worker && <p className='text-red-500'>{errors.worker.message}</p>}
                     </div>
                     <div className="form-control w-full text-xs">
-                        <label className="label"> <span className="label-text">Task Name</span></label>
+                        <label className="label"> <span className="label-text">Email</span></label>
+                        <input type="email" defaultValue={user.email} {...register("email", {
+                            required: false
+                        })} className="input input-bordered w-full border-gray-900 border-dashed text-black" readOnly />
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                    </div>
+                </div>
+
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 lg:p-5'>
+                    <div className="form-control w-full text-xs m-2">
+                        <label className="label"> <span className="label-text">Project Name</span></label>
                         <input type="text" placeholder='enter task name' {...register("name", {
-                            required: "Task Name is Required"
-                        })} className="input input-bordered w-full border-b border-gray-900 border-dashed text-black" />
+                            required: "Project Name is Required"
+                        })} className="input input-bordered w-full  border-gray-900 border-dashed text-black border p-2" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
-                    <div className="form-control w-full text-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
-                        <input type="email" placeholder='enter email' {...register("email", {
-                            required: "email is Required"
-                        })} className="input input-bordered w-full border-b border-gray-900 border-dashed text-black" />
-                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                    <div className="form-control w-full text-xs m-2">
+                        <label className="label"> <span className="label-text">Live site link</span></label>
+                        <input type="text" placeholder='paste your live site link' {...register("live", {
+                            required: false
+                        })} className="input input-bordered w-full  border-gray-900 border-dashed text-black border p-2" />
+                        {errors.live && <p className='text-red-500'>{errors.live.message}</p>}
+                    </div>
+                    <div className="form-control w-full text-xs m-2">
+                        <label className="label"> <span className="label-text">Client site Repository</span></label>
+                        <input type="text" placeholder='Past client site repository link' {...register("client", {
+                            required: "Client site Repository is Required"
+                        })} className="input input-bordered w-full  border-gray-900 border-dashed text-black border p-2" />
+                        {errors.client && <p className='text-red-500'>{errors.client.message}</p>}
+                    </div>
+                    <div className="form-control w-full text-xs m-2">
+                        <label className="label"> <span className="label-text">Server site repository</span></label>
+                        <input type="text" placeholder='Past client site repository link' {...register("server", {
+                            required: false
+                        })} className="input input-bordered w-full  border-gray-900 border-dashed text-black border p-2" />
+                        {errors.server && <p className='text-red-500'>{errors.server.message}</p>}
                     </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 p-5'>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Task Image</label>
+                        <label className="block text-sm font-medium text-gray-700">Project Image</label>
                         <div className="mt-1 flex flex-col place-items-center justify-center items-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 lg:h-48">
                             <div className="space-y-1 text-center  flex flex-col place-items-center justify-center items-center">
                                 <div className='w-32 h-32 bg-gray-300 rounded-full flex flex-col place-items-center justify-center items-center'>
@@ -121,8 +149,8 @@ const AddTask = () => {
 
                     </div>
                 </div>
-                <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded-lg my-2 text-sm">
-                    SUBMIT TASK
+                <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded-lg my-2 text-sm uppercase">
+                    SUBMIT Project
                 </button>
             </form>
         </div>

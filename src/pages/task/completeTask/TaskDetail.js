@@ -79,7 +79,7 @@ const TaskDetail = () => {
                                             <span className="ml-2 w-0 flex-1 truncate">live site link</span>
                                         </div>
                                         <div className="ml-4 flex-shrink-0">
-                                            <ExternalLink href="#" className="font-medium">
+                                            <ExternalLink href={`${task.live}`} className="font-medium">
                                                 <FaExternalLinkAlt></FaExternalLinkAlt>
                                             </ExternalLink>
                                         </div>
@@ -93,7 +93,7 @@ const TaskDetail = () => {
                                             <span className="ml-2 w-0 flex-1 truncate">client site repository</span>
                                         </div>
                                         <div className="ml-4 flex-shrink-0">
-                                            <ExternalLink href="#" className="font-medium">
+                                            <ExternalLink href={`${task.client}`} className="font-medium">
                                                 <FaExternalLinkAlt></FaExternalLinkAlt>
                                             </ExternalLink>
                                         </div>
@@ -107,7 +107,7 @@ const TaskDetail = () => {
                                             <span className="ml-2 w-0 flex-1 truncate">server site repository</span>
                                         </div>
                                         <div className="ml-4 flex-shrink-0">
-                                            <ExternalLink href="#" className="font-medium">
+                                            <ExternalLink href={`${task?.server}`} className="font-medium">
                                                 <FaExternalLinkAlt></FaExternalLinkAlt>
                                             </ExternalLink>
                                         </div>
