@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Demo from '../components/demo/Demo';
 import Main from '../layouts/Main';
 import Home from '../pages/home/Home';
 import AddTask from '../pages/task/addTask/AddTask';
@@ -52,15 +51,6 @@ const Router = () => {
                 {
                     path: '/signup',
                     element: <Signup></Signup>
-                },
-                {
-                    path: '/demo',
-                    element: <Demo></Demo>
-                },
-                {
-                    path: '/demo/:id',
-                    element: <Demo></Demo>,
-                    loader: async ({ params }) => fetch(`https://server-space.vercel.app/mytask/${params.id}`)
                 },
                 {
                     path: '/taskdetail/:id',

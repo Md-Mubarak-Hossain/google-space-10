@@ -2,22 +2,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { ExternalLink } from 'react-external-link';
 import Protect from '../../../router/Protect';
 const MyTask = () => {
     const { user, loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
     useEffect(() => {
-        fetch('https://server-space.vercel.app/mytask')
+        fetch(`https://server-space.vercel.app/mytask`)
             .then(res => res.json())
-            .then(data => setTask(data))
+            .then(data => {
+                setTask(data)
+                console.log(data)
+            }
+            )
+
     }, [])
 
     console.log(tasks);
 
     const handleDelete = id => {
-        const procced = window.confirm(`Are you sure to delete??`)
+        const procced = window.confirm(`Are you sure to delete?? `)
         if (procced) {
             fetch(`https://server-space.vercel.app/mytask/${id}`, {
                 method: 'DELETE',
@@ -38,41 +41,36 @@ const MyTask = () => {
     if (loading)
         return <p>loading...</p >
     return (
-        <>
+        <div className='w-screen min-h-screen'>
+            <h2 className='my-5 w-full text-center uppercase'>Your Completed Project Display</h2>
             {tasks.map(task => <div key={task._id}>
+                {
+                    task.email === user.email ?
 
-                {task.email === user.email ?
-                    <>
-                        {
-                            task.description.length === 0 ?
-                                <></> :
-                                <>
+                        <>
+                            {
+                                task.description.length === 0 ?
+                                    <></> :
                                     <div className="overflow-hidden  shadow sm:rounded-lg p-5 m-5">
                                         <div className="px-4 py-5 sm:px-6">
-                                            <h3 className="text-lg font-medium leading-6 text-blue-900">Project Information</h3>
+                                            <h3 className="text-lg font-medium leading-6 text-blue-900 uppercase">{task.name} Project Information</h3>
                                             <p className="mt-1 max-w-2xl text-sm text-blue-500">Project details and application.</p>
                                         </div>
                                         <div className="border-t border-gray-200">
                                             <dl>
-                                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt className="text-sm font-medium text-gray-500">Worker Name</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.worker}</dd>
+                                                <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt className="text-sm font-medium ">Worker Name</dt>
+                                                    <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">{task.worker}</dd>
                                                 </div>
                                                 <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt className="text-sm font-medium text-gray-500">Project name</dt>
+                                                    <dt className="text-sm font-medium ">Project name</dt>
                                                     <dd className="mt-1 text-sm text-blue-900 sm:col-span-2 sm:mt-0">{task.name}</dd>
                                                 </div>
-                                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.email}</dd>
-                                                </div>
                                                 <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt className="text-sm font-medium text-gray-500">Get access</dt>
-                                                    <dd className="mt-1 text-sm text-gray-500 sm:col-span-2 sm:mt-0">$120,000</dd>
-                                                </div>
-                                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt className="text-sm font-medium text-gray-500">About</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 rounded">{task.description}</dd>
+                                                    <dt className="text-sm font-medium ">Project images</dt>
+                                                    <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">
+                                                        <img src={task.image} alt="" className='rounded-lg' />
+                                                    </dd>
                                                 </div>
                                             </dl>
                                         </div>
@@ -83,14 +81,13 @@ const MyTask = () => {
                                             </Link></button>
                                         </div>
                                     </div>
-                                </>
-                        }
-                    </>
-                    : <p className='hidden'>
-                    </p>}
+                            }
+                        </>
+                        : <></>
+                }
             </div>)
             }
-        </>
+        </div >
     );
 };
 export default MyTask;

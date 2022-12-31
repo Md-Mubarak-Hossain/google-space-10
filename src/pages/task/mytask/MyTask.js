@@ -5,16 +5,11 @@ import { AuthContext } from '../../../context/Context';
 const MyTask = () => {
     const { user, loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
-    const [email, setEmail] = useState('')
-    console.log(email)
     useEffect(() => {
         fetch(`https://server-space.vercel.app/mytask`)
             .then(res => res.json())
             .then(data => setTask(data))
     }, [])
-
-    console.log(tasks);
-
     const handleDelete = id => {
         const procced = window.confirm(`Are you sure to delete??`)
         if (procced) {
@@ -38,7 +33,7 @@ const MyTask = () => {
         return <p>loading...</p >
     return (
 
-        <div class="my-10 p-2">
+        <div class="my-10 p-2 w-screen min-h-screen">
             <div className='text-lg lg:text-xl uppercase'>Your Project House</div>
             <hr className='w-full text-xl font-bold text-violet-900' />
             <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>

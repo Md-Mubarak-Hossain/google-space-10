@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
 import { FaExternalLinkAlt } from 'react-icons/fa';
@@ -35,41 +35,47 @@ const TaskDetail = () => {
         return <p>loading...</p >
     return (
         <>
-            <div className="overflow-hidden bg-white shadow sm:rounded-lg p-5 m-5">
+            <div className="overflow-hidden  shadow sm:rounded-lg p-5 m-5">
                 <div className="px-4 py-5 sm:px-6">
                     <h3 className="text-lg font-medium leading-6 text-violet-900">Project Information</h3>
-                    <p className="mt-1 max-w-2xl text-sm text-gray-500">Project details and application.</p>
+                    <p className="mt-1 max-w-2xl text-sm ">Project details and application.</p>
                 </div>
                 <div className="border-t border-gray-200">
                     <dl>
-                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Worker Name</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.worker}</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Worker Name</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">{task.worker}</dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Project name</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.name}</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Project name</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">{task.name}</dd>
                         </div>
-                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.email}</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Project images</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">
+                                <img src={task.image} alt="" className='rounded-lg' />
+                            </dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Get Access</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Email address</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">{task.email}</dd>
                         </div>
-                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">About</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.description}</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Get Access</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">$120,000</dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Project technologies</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">React,Typscript</dd>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">About</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">{task.description}</dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Attachments</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Project technologies</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">React,Typscript</dd>
+                        </div>
+                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium ">Attachments</dt>
+                            <dd className="mt-1 text-sm  sm:col-span-2 sm:mt-0">
+                                <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
                                     <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                                         <div className="flex w-0 flex-1 items-center">
 
@@ -113,12 +119,6 @@ const TaskDetail = () => {
                                         </div>
                                     </li>
                                 </ul>
-                            </dd>
-                        </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Project images</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                <img src={task.image} alt="" className='rounded-lg' />
                             </dd>
                         </div>
                     </dl>

@@ -9,9 +9,9 @@ const Context = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const gitProvider = new GithubAuthProvider();
 
-    const createUser = (email, password, name, photoURL) => {
+    const createUser = (email, password, displayName) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password, name, photoURL)
+        return createUserWithEmailAndPassword(auth, email, password, displayName)
     }
 
     // const signUp = (email, password) => {
