@@ -10,6 +10,7 @@ import MyTask from '../pages/task/mytask/MyTask';
 import Signup from '../account/Signup';
 import Login from '../account/Login';
 import Protect from './Protect';
+import TaskDetail from '../pages/task/completeTask/TaskDetail';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -54,6 +55,11 @@ const Router = () => {
                 {
                     path: '/demo/:id',
                     element: <Demo></Demo>,
+                    loader: async ({ params }) => fetch(`https://server-space.vercel.app/mytask/${params.id}`)
+                },
+                {
+                    path: '/taskdetail/:id',
+                    element: <TaskDetail></TaskDetail>,
                     loader: async ({ params }) => fetch(`https://server-space.vercel.app/mytask/${params.id}`)
                 },
             ]

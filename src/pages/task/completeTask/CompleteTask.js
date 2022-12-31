@@ -2,7 +2,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
-
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { ExternalLink } from 'react-external-link';
+import Protect from '../../../router/Protect';
 const MyTask = () => {
     const { loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
@@ -36,45 +38,52 @@ const MyTask = () => {
     if (loading)
         return <p>loading...</p >
     return (
-
-        <div class="w-full overflow-x-auto my-10 p-2">
-            <h2>total task:{tasks.length}</h2>
-            <table class="w-full text-left border border-separate rounded border-slate-200">
-                <tbody>
-                    <tr>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium text-center border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Worker</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task Name</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task description</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Image</th>
-                        <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task Position</th>
-                    </tr>
-                    {tasks.map(task => <tr key={task._id}>
-
-                        {
-
-                            task.description.length === 0 ?
-                                <></>
-                                :
-                                <>
-                                    <th scope="row" class="h-12 px-6 text-sm text-center transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                                        <button onClick={() => handleDelete(task._id)}>Delete</button>
-                                    </th>
-                                    <th scope="row" class="h-12 px-6 text-sm text-center transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.worker}</th>
-                                    <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.name}</td>
-                                    <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{task.description}</td>
-                                    <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                                        <img src={task.image} alt="" className='w-48' />
-                                    </td>
-                                    <td class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500">
-                                        <Link to={`/uncomplete/${task._id}`} className='text-red-900'>Edit task</Link>
-                                    </td>
-                                </>
-                        }
-                    </tr>)
-                    }
-                </tbody>
-            </table>
-        </div >
+        <>
+            {tasks.map(task => <div key={task._id}>
+                {
+                    task.description.length === 0 ?
+                        <></> :
+                        <>
+                            <div className="overflow-hidden  shadow sm:rounded-lg p-5 m-5">
+                                <div className="px-4 py-5 sm:px-6">
+                                    <h3 className="text-lg font-medium leading-6 text-blue-900">Project Information</h3>
+                                    <p className="mt-1 max-w-2xl text-sm text-blue-500">Project details and application.</p>
+                                </div>
+                                <div className="border-t border-gray-200">
+                                    <dl>
+                                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt className="text-sm font-medium text-gray-500">Worker Name</dt>
+                                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.worker}</dd>
+                                        </div>
+                                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt className="text-sm font-medium text-gray-500">Project name</dt>
+                                            <dd className="mt-1 text-sm text-blue-900 sm:col-span-2 sm:mt-0">{task.name}</dd>
+                                        </div>
+                                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt className="text-sm font-medium text-gray-500">Email address</dt>
+                                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{task.email}</dd>
+                                        </div>
+                                        <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt className="text-sm font-medium text-gray-500">Get access</dt>
+                                            <dd className="mt-1 text-sm text-gray-500 sm:col-span-2 sm:mt-0">$120,000</dd>
+                                        </div>
+                                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt className="text-sm font-medium text-gray-500">About</dt>
+                                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 rounded">{task.description}</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div className='flex my-2'>
+                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/uncomplete/${task._id}`} className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '>Edit task</Link></button>
+                                    <Protect><button className='uppercase text-xs bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' onClick={() => handleDelete(task._id)}>Delete</button></Protect>
+                                    <button className='uppercase text-xs btn mx-2 btn-blue-400'><Link to={`/taskdetail/${task._id}`} className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase'>See Complete Task</Link></button>
+                                </div>
+                            </div>
+                        </>
+                }
+            </div >)
+            }
+        </>
     );
 };
 export default MyTask;

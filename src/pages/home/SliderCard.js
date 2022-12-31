@@ -112,34 +112,34 @@ const SliderCard = () => {
                 {/*    <!-- Indicators --> */}
                 <div
                     className="absolute bottom-0 flex items-center justify-center w-full gap-2"
-                    data-glide-el="controls[nav]"
-                >
+                    data-glide-el="controls[nav]">
+
                     <button
                         className="p-4 group"
                         data-glide-dir="=0"
-                        aria-label="goto slide 1"
-                    >
+                        aria-label="goto slide 1">
+
                         <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
                     </button>
                     <button
                         className="p-4 group"
                         data-glide-dir="=1"
-                        aria-label="goto slide 2"
-                    >
+                        aria-label="goto slide 2">
+
                         <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
                     </button>
                     <button
                         className="p-4 group"
                         data-glide-dir="=2"
-                        aria-label="goto slide 3"
-                    >
+                        aria-label="goto slide 3">
+
                         <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
                     </button>
                     <button
                         className="p-4 group"
                         data-glide-dir="=3"
-                        aria-label="goto slide 4"
-                    >
+                        aria-label="goto slide 4">
+
                         <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
                     </button>
                 </div>

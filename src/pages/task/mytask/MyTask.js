@@ -42,6 +42,7 @@ const MyTask = () => {
             <table class="w-full text-left border border-separate rounded border-slate-200">
                 <tbody>
                     <tr>
+                        <th scope="col" class="h-12 px-6 text-sm font-medium text-center border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100"></th>
                         <th scope="col" class="h-12 px-6 text-sm font-medium text-center border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Worker</th>
                         <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task Name</th>
                         <th scope="col" class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Task description</th>
