@@ -11,6 +11,7 @@ import Signup from '../account/Signup';
 import Login from '../account/Login';
 import Protect from './Protect';
 import TaskDetail from '../pages/task/completeTask/TaskDetail';
+import AllTask from '../pages/task/AllTask/AllTask';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -29,7 +30,7 @@ const Router = () => {
                 },
                 {
                     path: '/my',
-                    element: <MyTask></MyTask>
+                    element: <Protect><MyTask></MyTask></Protect>
                 },
                 {
                     path: '/uncomplete/:id',
@@ -39,6 +40,10 @@ const Router = () => {
                 {
                     path: '/complete',
                     element: <CompleteTask></CompleteTask>
+                },
+                {
+                    path: '/all',
+                    element: <AllTask></AllTask>
                 },
                 {
                     path: '/login',

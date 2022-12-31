@@ -45,6 +45,17 @@ const Main = () => {
         <li role="none" className="flex items-stretch">
             <Link
                 role="menuitem"
+                aria-haspopup="false"
+                tabIndex="0"
+                className="flex items-center gap-2 py-2 lg:px-3"
+                to='/all'
+            >
+                <span>All Task</span>
+            </Link>
+        </li>
+        <li role="none" className="flex items-stretch">
+            <Link
+                role="menuitem"
                 aria-current="page"
                 aria-haspopup="false"
                 tabIndex="0"
@@ -147,7 +158,7 @@ const Main = () => {
                         <ul
                             role="menubar"
                             aria-label="Select page"
-                            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain ${them} px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 uppercase ${isToggleOpen
+                            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain ${them} px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex h-screen lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 uppercase ${isToggleOpen
                                 ? "visible opacity-100 backdrop-blur-sm"
                                 : "invisible opacity-0"
                                 } `}>
@@ -158,7 +169,7 @@ const Main = () => {
             </header >
             <Outlet></Outlet >
             <Footer></Footer>
-        </div >
+        </div>
     );
 };
 
