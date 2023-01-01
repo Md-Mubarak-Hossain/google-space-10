@@ -49,9 +49,9 @@ const MyTask = () => {
                                         <div class="p-2 text-sm text-justify uppercase">PROJECT images:
                                             <img src={task.image} alt="" />
                                         </div>
-                                        <div class="p-2 text-sm text-justify">live site: {task.live}</div>
-                                        <div class="p-2 text-sm text-justify">client site repository: {task.client}</div>
-                                        <div class="p-2 text-sm text-justify">server site repository: {task?.server}</div>
+                                        <div class="p-2 text-sm ">live site: {task.live}</div>
+                                        <div class="p-2 text-sm ">client site repository: {task.client}</div>
+                                        <div class="p-2 text-sm ">server site repository: {task?.server}</div>
                                     </div>
                                     <div class="p-2 text-sm">
                                         {
