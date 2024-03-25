@@ -7,7 +7,7 @@ import './Add.css';
 const AddTask = () => {
     const { user, loading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const imageHostKey = process.env.REACT_APP_imgbb_key;
+    const imageHostKey = "ae266888dd79c1813e95bf158ef42014";
 
     const handleUploadData = data => {
         const image = data.image[0];
@@ -33,8 +33,8 @@ const AddTask = () => {
                         image: imgData.data.url
                     }
 
-                    // save doctor information to the database
-                    fetch('https://server-space.vercel.app/mytask', {
+                    // save project information to the database
+                    fetch( `htt`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -53,7 +53,7 @@ const AddTask = () => {
     }
 
     if (loading) {
-        return <p>loading...</p>
+        return <p>uploading...</p>
     }
 
     return (
@@ -116,10 +116,10 @@ const AddTask = () => {
                                 <div className="mt-1 flex flex-col place-items-center justify-center items-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 lg:h-48">
                                     <div className="space-y-1 text-center  flex flex-col place-items-center justify-center items-center">
                                         <div className='w-32 h-32 bg-gray-300 rounded-full flex flex-col place-items-center justify-center items-center'>
-                                            <BsCardImage className='block text-7xl w-full text-gray-500'></BsCardImage>
+                                            <BsCardImage className='block text-7xl w-full '></BsCardImage>
                                         </div>
-                                        <div className="flex text-sm text-gray-600">
-                                            <label className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                                        <div className="flex text-sm ">
+                                            <label className="relative cursor-pointer rounded-md  font-medium focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
 
                                                 <input type="file" {...register("image", {
                                                     required: "Task images is Required"
@@ -142,7 +142,7 @@ const AddTask = () => {
 
                             </div>
                         </div>
-                        <button class="btn bg-violet-900 hover:bg-violet-600 text-white font-bold  py-2 px-4 rounded-lg my-2 text-sm uppercase">
+                        <button className="btn  font-bold  py-2 px-4 rounded-lg my-2">
                             SUBMIT Project
                         </button>
                     </form>

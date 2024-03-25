@@ -8,7 +8,7 @@ const Home = () => {
             <div className='lg:rounded-t-full rounded-b-none lg:bg-purple-600'>
                 <div className='avatar w-full flex flex-col place-items-center justify-center items-center p-2 lg:p-5 mt-5'>
                     <h2 className='text-xl lg:text-2xl font-bold lg:text-slate-900 mb-5'>Google Space Use instructions</h2>
-                    <p className='w-56 h-56 rounded-full text-white font-bold bg-purple-700 flex flex-col place-items-center justify-center items-center uppercase text-2xl'>
+                    <p className='w-56 h-56 rounded-full text-white font-bold bg-purple-700 flex flex-col place-items-center justify-center items-center  text-2xl'>
                         <Link to="/signup" className="font-medium flex flex-col items-center justify-center place-items-center">
                             Get Started
                             <FaExternalLinkAlt className='mx-1 text-xl'></FaExternalLinkAlt>
@@ -22,7 +22,7 @@ const Home = () => {
                         <li className='w-full flex place-items-center py-1'> <BsArrowRightCircleFill className='mx-1'></BsArrowRightCircleFill><p>After completing create account you are access for your site</p></li>
                     </ol>
                 </div>
-                <div className='grid grid-cols-1 lg:grid-cols-4 p-5 uppercase place-items-center gap-2 lg:gap-4'>
+                <div className='grid grid-cols-1 lg:grid-cols-4 p-5  place-items-center gap-2 lg:gap-4'>
                     <Link to='/signup' className='rounded-lg bg-violet-800 text-white shadow shadow-violet-600 w-full lg:w-56 h-20 flex flex-col place-items-center justify-center items-center'> <FaExternalLinkAlt className='mx-1 text-xl'></FaExternalLinkAlt>Create Account</Link>
                     <Link to='/add' className='rounded-lg bg-violet-800 text-white shadow shadow-violet-600 w-full lg:w-56 h-20 flex flex-col place-items-center justify-center items-center'> <FaExternalLinkAlt className='mx-1 text-xl'></FaExternalLinkAlt>Add Project</Link>
                     <Link to='/my' className='rounded-lg bg-violet-800 text-white shadow shadow-violet-600 w-full lg:w-56 h-20 flex flex-col place-items-center justify-center items-center'> <FaExternalLinkAlt className='mx-1 text-xl'></FaExternalLinkAlt>Your Project</Link>

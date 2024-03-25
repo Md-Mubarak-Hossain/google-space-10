@@ -7,7 +7,7 @@ const MyTask = () => {
     const { user, loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
     useEffect(() => {
-        fetch(`https://server-space.vercel.app/mytask`)
+        fetch(`https://projects-drive-file.vercel.app/mytask`)
             .then(res => res.json())
             .then(data => {
                 setTask(data)
@@ -22,7 +22,7 @@ const MyTask = () => {
     const handleDelete = id => {
         const procced = window.confirm(`Are you sure to delete?? `)
         if (procced) {
-            fetch(`https://server-space.vercel.app/mytask/${id}`, {
+            fetch(`https://projects-drive-file.vercel.app/mytask/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

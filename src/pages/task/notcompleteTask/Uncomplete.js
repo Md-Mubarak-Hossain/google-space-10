@@ -13,7 +13,7 @@ const Uncomplete = () => {
 
     const handleSub = event => {
         event.preventDefault();
-        fetch(`https://server-space.vercel.app/mytask/${tasks._id}`, {
+        fetch(`https://projects-drive-file.vercel.app/mytask/${tasks._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -49,28 +49,28 @@ const Uncomplete = () => {
         <>
             <h2 className='w-full p-4 text-center text-bold'>Uncomplete Task</h2>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                <form onSubmit={handleSub} class="w-full max-w-lg p-5">
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <form onSubmit={handleSub} className="w-full max-w-lg p-5">
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                 Worker Name
                             </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" defaultValue={taskData.worker} readOnly disabled />
+                            <input className="appearance-none block w-full bg-gray-200 text-gray-700  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" defaultValue={taskData.worker} readOnly disabled />
 
                         </div>
-                        <div class="w-full md:w-1/2 px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <div className="w-full md:w-1/2 px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Task Name
                             </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" defaultValue={taskData.name} readOnly disabled />
+                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" defaultValue={taskData.name} readOnly disabled />
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                 Description
                             </label>
-                            <textarea onChange={onChangeHandle} cols='12' rows='5' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name='description' type="password" placeholder="Please write about your task" required />
+                            <textarea onChange={onChangeHandle} cols='12' rows='5' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name='description' type="password" placeholder="Please write about your task" required />
                         </div>
                     </div>
                     <button className="btn w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
