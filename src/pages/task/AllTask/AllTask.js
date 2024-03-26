@@ -15,28 +15,8 @@ const AllTask = () => {
     }, [])
 
     console.log(tasks);
-
-    const handleDelete = id => {
-        const procced = window.confirm(`Are you sure to delete??`)
-        if (procced) {
-            fetch(`https://projects-drive-file.vercel.app/mytask/${id}`, {
-                method: 'DELETE',
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.deletedCount > 0) {
-                        const remainTask = tasks.filter(d => d._id !== id)
-                        setTask(remainTask);
-                        tasks();
-                        alert('successfully deleted')
-                    }
-
-                })
-        }
-    }
-    if (loading)
-        return <p>loading...</p >
+if(loading)<p>loading...</p>
+    
     return (
 
         <div className="my-10 p-2">
@@ -57,9 +37,7 @@ const AllTask = () => {
                             <div className="p-2 text-sm">server site repository: {task?.serverSite}</div>
                         </div>
                     <Link to={`/update/${task._id}`} >See Details</Link>
-                    </div>
-                    <button onClick={()=>handleDelete(`${task?._id}`)}>Delete</button>
-                  
+                    </div>                                    
                 </div>)
                 }
             </div>
