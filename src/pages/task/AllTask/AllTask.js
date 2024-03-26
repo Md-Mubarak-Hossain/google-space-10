@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../../context/Context';
 import { Link } from 'react-router-dom';
-import Update from '../updateTask/Update';
+
 
 const AllTask = () => {
     const { user, loading } = useContext(AuthContext)
@@ -46,19 +46,19 @@ const AllTask = () => {
                 {tasks.map(task => <div key={task._id}  >
                     <div className='w-full lg:h-full lg:shadow-violet-700 lg:shadow-xl  lg:p-5 rounded'>
                         <div className='w-full p-2 lg:my-5'>
-                            <div className="p-2 text-sm ">WORKER: {task.worker}</div>
-                            <div className="p-2 text-sm font-bold">PROJECT NAME: {task.name}</div>
-                            <div className="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task.description}</div>
-                            <div className="p-2 text-sm text-justify">PROJECT images:
-                                <img src={task.image} alt="" />
+                            <div className="p-2 text-sm ">Developer Name: {task?.worker}</div>
+                            <div className="p-2 text-sm font-bold">PROJECT NAME: {task?.title}</div>
+                            <div className="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task?.description.slice(0,200)}</div>
+                            <div className="p-2 h-32 text-sm text-justify">
+                                <img className="h-32 w-full" src={task?.thumb} alt="projectImages" />
                             </div>
-                            <div className="p-2 text-sm">live site: {task.live}</div>
-                            <div className="p-2 text-sm">client site repository: {task.client}</div>
-                            <div className="p-2 text-sm">server site repository: {task?.server}</div>
+                            <div className="p-2 text-sm">live site: {task?.liveSite}</div>
+                            <div className="p-2 text-sm">client site repository: {task?.clientSite}</div>
+                            <div className="p-2 text-sm">server site repository: {task?.serverSite}</div>
                         </div>
+                    <Link to={`/update/${task._id}`} >See Details</Link>
                     </div>
                     <button onClick={()=>handleDelete(`${task?._id}`)}>Delete</button>
-                    <Link t0={`/update/:${task._id}`}>Edit</Link>
                   
                 </div>)
                 }

@@ -45,7 +45,7 @@ const MyTask = () => {
             <h2 className='my-5 w-full text-center uppercase'>Your Completed Project Display</h2>
             {tasks.map(task => <div key={task._id}>
                 {
-                    task.email === user.email ?
+                    task.email !== user.email?
 
                         <>
                             {
@@ -83,7 +83,7 @@ const MyTask = () => {
                                     </div>
                             }
                         </>
-                        : <></>
+                        : <div className='hidden'>No task</div>
                 }
             </div>)
             }

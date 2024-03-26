@@ -39,15 +39,15 @@ const MyTask = () => {
             <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>
                 {tasks.map(task => <div key={task._id}  >
                     {
-                        task.email === user.email ?
+                        task.email !== user.email ?
                             <>
                                 <div className='w-full lg:h-full lg:shadow-violet-700 lg:shadow-xl lg:relative lg:p-5 rounded'>
                                     <div className='w-full p-2 lg:my-5'>
                                         <div className="p-2 text-sm uppercase text-blue-700">WORKER: {task.worker}</div>
-                                        <div className="p-2 text-sm uppercase text-blue-700 font-bold">PROJECT NAME: {task.name}</div>
+                                        <div className="p-2 text-sm uppercase text-blue-700 font-bold">PROJECT NAME: {task.title}</div>
                                         <div className="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task.description.slice(0, 300)}</div>
                                         <div className="p-2 text-sm text-justify uppercase">PROJECT images:
-                                            <img src={task.image} alt="" />
+                                            <img src={task.thumb} alt="" />
                                         </div>
                                         <div className="p-2 text-sm ">live site: {task.live}</div>
                                         <div className="p-2 text-sm ">client site repository: {task.client}</div>
@@ -70,7 +70,7 @@ const MyTask = () => {
                                 </div>
                             </>
                             :
-                            <></>
+                            <div>There is no task you have matched</div>
                     }
 
 

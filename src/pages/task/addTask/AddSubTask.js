@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BsCardImage } from 'react-icons/bs'
 import { AuthContext } from '../../../context/Context';
 import './Add.css';
-const AddTask = () => {
+const AddSubTask = () => {
     const { user, loading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = "dfaf988d2949563367b37e46912e3da6";
@@ -46,6 +46,7 @@ const AddTask = () => {
                             console.log(result);
                             if (result.acknowledged) {
                                 alert(`${data.name} is added successfully`);
+                                data.reset();
                             }
                         })
                 }
@@ -152,4 +153,4 @@ const AddTask = () => {
     );
 };
 
-export default AddTask;
+export default AddSubTask;

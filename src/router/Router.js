@@ -12,6 +12,8 @@ import Protect from './Protect';
 import TaskDetail from '../pages/task/completeTask/TaskDetail';
 import AllTask from '../pages/task/AllTask/AllTask';
 import Update from '../pages/task/updateTask/Update';
+import AddSubTask from '../pages/task/addTask/AddSubTask';
+import Dashboard from '../dashboard/Dashboard';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -25,6 +27,16 @@ const Router = () => {
                     loader: () => fetch('https://projects-drive-file.vercel.app/mytask')
                 },
                 {
+                    path: '/dashboard',
+                    element: <Protect><Dashboard></Dashboard></Protect>,
+                    loader: () => fetch('https://projects-drive-file.vercel.app/mytask')
+                },
+                {
+                    path: '/addSub',
+                    element: <Protect><AddSubTask></AddSubTask></Protect>,
+                    loader: () => fetch('https://projects-drive-file.vercel.app/mytask')
+                },
+                {
                     path: '/add',
                     element: <Protect><AddTask></AddTask></Protect>
                 },
@@ -35,6 +47,11 @@ const Router = () => {
                 {
                     path: '/uncomplete/:id',
                     element: <Protect><UncompleteTask></UncompleteTask></Protect>,
+                    loader: async ({ params }) => fetch(`https://projects-drive-file.vercel.app/mytask/${params.id}`)
+                },
+                {
+                    path: '/update/:id',
+                    element: <Protect><Update></Update></Protect>,
                     loader: async ({ params }) => fetch(`https://projects-drive-file.vercel.app/mytask/${params.id}`)
                 },
                 {

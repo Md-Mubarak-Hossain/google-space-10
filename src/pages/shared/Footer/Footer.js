@@ -1,4 +1,4 @@
-import React from "react"
+
 import { ExternalLink } from "react-external-link";
 import { BsLinkedin, BsSkype, BsYoutube, BsTwitter, BsGithub } from 'react-icons/bs';
 import { SiNetlify } from 'react-icons/si';
@@ -7,10 +7,10 @@ const Footer = () => {
     return (
         <>
             {/*    <!-- Component: Dark Theme Footer --> */}
-            < footer className="w-full text-slate-400" >
+            < footer className="w-full text-slate-300" >
                 {/*      <!-- Main footer --> */}
-                < div className="pt-16 pb-12 text-sm border-t border-slate-900 bg-slate-900" >
-                    <div className="container px-6 mx-auto">
+                < div className="pt-16 pb-12  border-t border-slate-900 bg-base-300" >
+                    <div className="container px-4 mx-auto">
                         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
                             <nav
                                 className="col-span-2 md:col-span-4 lg:col-span-3"
@@ -197,7 +197,7 @@ const Footer = () => {
                         </div >
                     </div >
                 </div >
-                < div className="py-4 text-sm border-t border-slate-900 bg-slate-700" >
+                < div className="py-4  border-t border-slate-900 bg-base-300" >
                     <div className="container px-6 mx-auto">
                         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
                             <div className="col-span-2 md:col-span-4 lg:col-span-6">

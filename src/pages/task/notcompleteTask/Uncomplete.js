@@ -55,14 +55,14 @@ const Uncomplete = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                 Worker Name
                             </label>
-                            <input className="appearance-none block w-full bg-gray-200 text-gray-700  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" defaultValue={taskData.worker} readOnly disabled />
+                            <input className="appearance-none block w-full bg-gray-200 text-gray-700  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" defaultValue={taskData?.worker} readOnly disabled />
 
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Task Name
                             </label>
-                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" defaultValue={taskData.name} readOnly disabled />
+                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" defaultValue={taskData?.name} readOnly disabled />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
@@ -79,7 +79,7 @@ const Uncomplete = () => {
                 </form>
                 <div className='w-full p-5'>
                     <h2>Task Image</h2>
-                    <img src={taskData.image} alt="" className='rounded' />
+                    <img src={taskData?.image} alt="" className='rounded' />
                 </div>
             </div>
         </>

@@ -43,26 +43,25 @@ const Login = () => {
     return (
         <>
 
-            <div className="w-full flex flex-col justify-center items-center place-items-center  bg-white shadow-md rounded p-4 mb-2 lg:px-8 lg:pt-6 lg:pb-8 lg:mb-4">
+            <div className="w-full flex flex-col justify-center items-center place-items-center  bg-base-300  shadow-md rounded p-4 mb-1 lg:px-8 lg:pt-6 lg:pb-8 lg:mb-4">
 
-                <div className='w-full border py-5 px-5 lg:px-10 lg:w-1/2 mx-auto rounded-lg'>
-                    <h2 className='uppercase text-center w-full'>login form</h2>
+                <div className='w-full border py-5 px-5 lg:px-10 lg:w-2/5 mx-auto rounded-lg'>                   
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" for="email">
+                            <label className="block text-sm font-bold mb-1" for="email">
                                 Email
                             </label>
-                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name='email' placeholder="email" />
+                            <input className="rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name='email' placeholder="email" />
                         </div>
                         <div className="mb-6">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+                            <label className="block text-sm font-bold mb-1" for="password">
                                 Password
                             </label>
-                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name='password' />
+                            <input className="rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name='password' />
                             <p className="text-red-500 text-xs italic">{error}</p>
                         </div>
                         <div className="flex flex-col items-center justify-between">
-                            <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                 Sign Up
                             </button>
                             <Link to='/signup' className="inline-block align-baseline text-gray-600 text-sm" >
