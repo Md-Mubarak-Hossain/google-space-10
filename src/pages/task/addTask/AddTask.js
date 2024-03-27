@@ -1,12 +1,10 @@
-
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import { useForm } from 'react-hook-form';
-import { BsCardImage } from 'react-icons/bs'
 import { AuthContext } from '../../../context/Context';
 import './Add.css';
 const AddTask = () => {
     const { user, loading } = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit} = useForm();
     const imageHostKey = "dfaf988d2949563367b37e46912e3da6";
 
     const handleUploadData = data => {

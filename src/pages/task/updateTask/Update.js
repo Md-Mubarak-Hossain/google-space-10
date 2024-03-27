@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext,useState } from 'react';
 import { ExternalLink } from 'react-external-link';
 import { Link, useLoaderData } from 'react-router-dom';
 import Loading from '../../../router/Loading';
@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/Context';
 
 const Update = () => {
     const taskData=useLoaderData();
-    const{user,loading}=useContext(AuthContext)
+    const{loading}=useContext(AuthContext)
     console.log(taskData);
 //   const [data, setData] = useState(taskData)
 //   const [taskData, setNav] = useState(taskData)

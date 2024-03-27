@@ -4,7 +4,7 @@ import { AuthContext } from '../context/Context';
 import Loading from '../router/Loading';
 
 const ProjectsOverView = () => {
-    const {loading,user}=useContext(AuthContext)
+    const {loading}=useContext(AuthContext);
     const [task,setTask]=useState();
     const handleDelete = id => {
         const opinion = window.confirm(`Are you sure to delete??`)

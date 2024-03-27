@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../../../router/Loading';
 
 const AllTask = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
     useEffect(() => {
         fetch(`https://projects-drive-file.vercel.app/mytask`)

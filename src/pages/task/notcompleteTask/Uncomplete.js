@@ -9,7 +9,7 @@ const Uncomplete = () => {
     useTitle('Update taskData');
     const taskData = useLoaderData();
     // console.log(taskData)
-    const { loading, user } = useContext(AuthContext)
+    const { loading } = useContext(AuthContext)
     const [tasks, setTask] = useState(taskData)
 
     const handleSub = event => {
@@ -41,11 +41,7 @@ const Uncomplete = () => {
         newtaskData[field] = value;
         setTask(newtaskData);
     }
-
     console.log(tasks)
-    if (loading) {
-        return <p>loading...</p>
-    }
     return (
         <>{loading?<Loading></Loading>:
         <div className='pt-10'>
