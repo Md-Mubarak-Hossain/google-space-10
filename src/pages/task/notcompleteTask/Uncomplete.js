@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
 import useTitle from '../../../Hooks/useTitle';
+import Loading from '../../../router/Loading';
 
 
 const Uncomplete = () => {
@@ -46,7 +47,8 @@ const Uncomplete = () => {
         return <p>loading...</p>
     }
     return (
-        <>
+        <>{loading?<Loading></Loading>:
+        <div className='pt-10'>
             <h2 className='w-full p-4 text-center text-bold'>Uncomplete Task</h2>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
                 <form onSubmit={handleSub} className="w-full max-w-lg p-5">
@@ -82,6 +84,7 @@ const Uncomplete = () => {
                     <img src={taskData?.image} alt="" className='rounded' />
                 </div>
             </div>
+        </div>}
         </>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
+import Loading from '../router/Loading';
 
 const ProjectsOverView = () => {
     const {loading,user}=useContext(AuthContext)
@@ -26,10 +27,9 @@ const ProjectsOverView = () => {
     }
     const tasks = useLoaderData();
     console.log(tasks);
-    if (loading)
-        return <p>loading...</p >
+    
     return (
-        <>
+        <> {loading?<Loading></Loading>:
             <div className="overflow-x-auto h-screen">
                 <table className="rounded-none">
                     {/* head */}
@@ -56,7 +56,7 @@ const ProjectsOverView = () => {
                                 <td className='p-1'>{t.serverSite}</td>
                                 <td className='p-1'>{t.technology}</td>
                                 <td className='flex flex-col justify-center items-center'>
-                                    <td className='p-1'><Link className="text-orange-300">Edit</Link></td>
+                                    <td className='p-1'><Link to={`/uncomplete/${t._id}`}className="text-orange-300">Edit</Link></td>
                                     <td className='p-1 text-blue-400'><Link to={`/update/${t._id}`} >Details</Link></td>
                                     <td className='p-1 text-red-500'><button onClick={()=>handleDelete(`${t?._id}`)}>Delete</button></td>                                
                                 </td>
@@ -64,7 +64,7 @@ const ProjectsOverView = () => {
                         }
                     </tbody>
                 </table>
-            </div>
+            </div>}
         </>
     );
 };

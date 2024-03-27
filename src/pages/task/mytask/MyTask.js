@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/Context';
+import Loading from '../../../router/Loading';
 const MyTask = () => {
     const { user, loading } = useContext(AuthContext)
     const [tasks, setTask] = useState([])
@@ -29,15 +30,15 @@ const MyTask = () => {
                 })
         }
     }
-    if (loading)
-        return <p>loading...</p >
+   
     return (
-
+<>{
+loading?<div className='pt-20'><Loading></Loading></div>:
         <div className="my-10 p-2 w-screen min-h-screen">
             <div className='text-lg lg:text-xl uppercase'>Your Project House</div>
             <hr className='w-full text-xl font-bold text-violet-900' />
             <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>
-                {tasks.map(task => <div key={task._id}  >
+                {tasks.map(task => <div key={task._id}>
                     {
                         task.email !== user.email ?
                             <>
@@ -70,14 +71,16 @@ const MyTask = () => {
                                 </div>
                             </>
                             :
-                            <div>There is no task you have matched</div>
+                            <div className='pt-20 text-center'>There is no task you have matched</div>
                     }
 
 
                 </div>)
                 }
             </div>
-        </div>
+        </div>}
+
+</>
     );
 };
 export default MyTask;

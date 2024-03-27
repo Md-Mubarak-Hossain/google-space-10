@@ -1,9 +1,7 @@
-
 import React, { useContext, useEffect, useState } from 'react';
-
 import { AuthContext } from '../../../context/Context';
 import { Link } from 'react-router-dom';
-
+import Loading from '../../../router/Loading';
 
 const AllTask = () => {
     const { user, loading } = useContext(AuthContext)
@@ -15,16 +13,18 @@ const AllTask = () => {
     }, [])
 
     console.log(tasks);
-if(loading)<p>loading...</p>
+// if(loading)<p>loading...</p>
     
     return (
-
+        <>
+        {
+        loading?<Loading/>:<>
         <div className="my-10 p-2">
             <div className='text-lg lg:text-xl'>ALL Project Display</div>
             <hr className='w-full text-xl font-bold' />
             <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'>
                 {tasks.map(task => <div key={task._id}  >
-                    <div className='w-full lg:h-full lg:shadow-violet-700 lg:shadow-xl  lg:p-5 rounded'>
+                    <div className='w-full  lg:shadow-violet-700 lg:shadow-xl  lg:p-5 rounded'>
                         <div className='w-full p-2 lg:my-5'>
                             <div className="p-2 text-sm ">Developer Name: {task?.worker}</div>
                             <div className="p-2 text-sm font-bold">PROJECT NAME: {task?.title}</div>
@@ -42,6 +42,8 @@ if(loading)<p>loading...</p>
                 }
             </div>
         </div >
+        </>}
+        </>
     );
 };
 export default AllTask;

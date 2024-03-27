@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ExternalLink } from 'react-external-link';
 import { Link, useLoaderData } from 'react-router-dom';
+import Loading from '../../../router/Loading';
+import { AuthContext } from '../../../context/Context';
 
 const Update = () => {
     const taskData=useLoaderData();
+    const{user,loading}=useContext(AuthContext)
     console.log(taskData);
 //   const [data, setData] = useState(taskData)
 //   const [taskData, setNav] = useState(taskData)
@@ -53,6 +56,8 @@ const Update = () => {
   };
   console.log("Features call:" + descriptionOpen);
   return (
+    <>
+    {loading?<Loading></Loading>:
      <div className='relative pt-5'>
       <span className='px-8 flex flex-row flex-wrap justify-end items-center fixed top-20 right-0 z-10'>
       </span>
@@ -134,7 +139,8 @@ const Update = () => {
             </div>
           </span>         
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 
