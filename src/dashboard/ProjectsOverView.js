@@ -49,7 +49,7 @@ const ProjectsOverView = () => {
                         {
                             tasks.map(t => <tr className='border-t border-green-900'>
                                 <td className='p-1'>{t.id}</td>
-                                <td className='p-1'>{t.title.slice(0, 12)}</td>
+                                <td className='p-1'>{t?.title?.slice(0, 12)}</td>
                                 <td className='p-1'><img src={t.thumb} alt="thumb" className='w-20 h-16' /></td>
                                 <td className='p-1'>{t.liveSite}</td>
                                 <td className='p-1'>{t.clientSite}</td>

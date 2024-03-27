@@ -46,7 +46,7 @@ loading?<div className='pt-20'><Loading></Loading></div>:
                                     <div className='w-full p-2 lg:my-5'>
                                         <div className="p-2 text-sm uppercase text-blue-700">WORKER: {task.worker}</div>
                                         <div className="p-2 text-sm uppercase text-blue-700 font-bold">PROJECT NAME: {task.title}</div>
-                                        <div className="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task.description.slice(0, 300)}</div>
+                                        <div className="p-2 text-sm text-justify">PROJECT DESCRIPTION: {task?.description?.slice(0, 300)}</div>
                                         <div className="p-2 text-sm text-justify uppercase">PROJECT images:
                                             <img src={task.thumb} alt="" />
                                         </div>
