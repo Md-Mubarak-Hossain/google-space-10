@@ -14,6 +14,7 @@ import AllTask from '../pages/task/AllTask/AllTask';
 import Update from '../pages/task/updateTask/Update';
 import AddSubTask from '../pages/task/addTask/AddSubTask';
 import Dashboard from '../dashboard/Dashboard';
+import Thumb from '../pages/projects/addprojects/Thumb';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -26,6 +27,11 @@ const Router = () => {
                     element: <Home></Home>,
                     loader: () => fetch('https://projects-drive-file.vercel.app/mytask')
                 },
+                {
+                    path:"/thumb",
+                    element:<Thumb/>
+                }
+                ,
                 {
                     path: '/dashboard',
                     element: <Protect><Dashboard></Dashboard></Protect>,

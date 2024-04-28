@@ -18,6 +18,14 @@ const Header = () => {
                 <li className="flex">
                     <Link
                         className="flex items-center   px-2"
+                        to='/thumb'
+                    >
+                        <span className='hover:border-b-2 hover:border-blue-200 focus:border-orange-400'>Thumb Upload</span>
+                    </Link>
+                </li>
+                <li className="flex">
+                    <Link
+                        className="flex items-center   px-2"
                         to='/dashboard'
                     >
                         <span className='hover:border-b-2 hover:border-blue-200 focus:border-orange-400'>Dashboard</span>

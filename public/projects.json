@@ -1,0 +1,27 @@
+[{
+    "id": 1,
+    "title": "Mobile Reseller (React Framework base)",
+    "liveSite": "https://mobile-resell-app-100.web.app/",
+    "clientSite": "https://github.com/Md-Mubarak-Hossain/MOBILE-RESELL",
+    "serverSite": "https://github.com/Md-Mubarak-Hossain/MOBILE-RESELL-SERVER",
+    "description": "User Experience (UX) is becoming increasingly popular as a differentiating factor in a competitive marketplace or a marketing tool for B2B digital content. Whenever users come to mobile resell website, they expect intuitive interfaces and extraordinary experiences that operate smoothly on different devices whether desktop, phone, or tablets. Setting a UX goal for mobile resell website is all about thinking about the interests of the customers who would use the service you’re creating (site, application, etc.) and then taking it a step further.",
+    
+    
+    "features1":"Admin Login:An admin can create an account",
+    "features2":"User Login:A User can create an account",
+    "features3":"Payment System:Here different online payment systems available",
+    "features4":"ReUseable:All re-useable mobile buy and sell here.",
+    
+    "technology": "REACT.JS, TailwindCSS, EXPRESS.JS, NODE.JS, MongoDB",
+    
+    "responsive": "Mobile,Tablet,Laptop,Desktop",
+    
+    "preview": "https://mobile-resell-app-100.web.app/",
+    
+    "mainThumb": "https://i.ibb.co/ysyvPqS/mobile-Resel.png",
+    
+    "subThumb1": "https://i.ibb.co/Rz0Dkw7/mobile0.png",
+    "subThumb2": "https://i.ibb.co/sVpw8t5/mobile1.png",
+    "subThumb3": "https://i.ibb.co/tLMHKfy/mobile2.png"
+    
+}]
